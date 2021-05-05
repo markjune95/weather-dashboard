@@ -1,0 +1,16 @@
+
+header{
+    background-color:indigo;
+    color: white;
+}
+img{
+    width: 50px;
+    height: 50px;
+    
+    
+}
+.forecast{
+    background-color:rgba(32, 37, 75, 0.938) ;
+    color: white;
+
+}
