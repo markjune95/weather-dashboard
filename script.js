@@ -3,6 +3,7 @@ var currentWeatherEl = $('#current-weather-card')
 var forecastWeatherEl = $('#forecast-weather-card')
 var weatherCardEl = $('#weather-card')
 var inputFormEl = $('.input-form')
+var cityPageEl = $('.add-city')
 
 
 var formSubmitHandler = function(event){
@@ -19,9 +20,18 @@ var formSubmitHandler = function(event){
     }
         
 }
+function savePage(cityName){
+    var cityList = []
+    for(var i = 0; i< cityList.length; i++){
+        var city = $('<button>')
+        city.addClass()
+
+    }
+}
 
 function getCurrentWeather(city){
-    var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=826b4b7604f424dc0251a61dd3c403f9`;
+    var key = '826b4b7604f424dc0251a61dd3c403f9'
+    var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${key}`;
     
     
     fetch(currentWeatherUrl)
