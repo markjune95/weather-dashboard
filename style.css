@@ -14,3 +14,6 @@ img{
     color: white;
 
 }
+.capitalize{
+    text-transform: capitalize;
+}

@@ -8,25 +8,33 @@ var cityPageEl = $('.add-city')
 
 var formSubmitHandler = function(event){
     event.preventDefault();
-    
     var city = $.trim(cityNameEl.val());
     if(city){
         
         getCurrentWeather(city)
-        
+        appendCityBtn(city)
+
+        var cityList = []
+        cityList.push(city)
+        console.log(cityList)
     }
     else{
         alert("Please enter a city's name")
     }
         
 }
-function savePage(cityName){
-    var cityList = []
-    for(var i = 0; i< cityList.length; i++){
-        var city = $('<button>')
-        city.addClass()
+function saveCity(){
 
-    }
+}
+
+function appendCityBtn(cityName){
+    
+    var cityBtn = $('<button>')
+    cityBtn.addClass('btn btn-secondary col-12 mt-3 capitalize')
+    cityBtn.attr('type', 'submit')
+    cityBtn.text(cityName)
+    cityPageEl.append(cityBtn)   
+    
 }
 
 function getCurrentWeather(city){
@@ -55,7 +63,8 @@ function getCurrentWeather(city){
 }
 
 function getForestWeather(lat,lon){
-    var forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=hourly,minutely,alerts&appid=a2b4c3401daabb98bf05eae4890ac57c`
+    var forecastKey = 'a2b4c3401daabb98bf05eae4890ac57c'
+    var forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=hourly,minutely,alerts&appid=${forecastKey}`
     fetch(forecastWeatherUrl)
         .then(function(response){
             response.json().then(function(data){
@@ -154,5 +163,5 @@ function displayForecastWeather(forecastData){
     
 }
 
-
+getCurrentWeather('raleigh')
 inputFormEl.on('click', formSubmitHandler)

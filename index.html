@@ -14,68 +14,30 @@
     </header>
     <main>
            <div class="d-flex">
-                <div class="col-4 p-3 add-city">
-                    <label for="formGroupExampleInput" class="form-label h1">Search for a City:</label>
-                    <input type="text" class="form-control fs-3" id="city-name" placeholder="Enter city....">
-                    <button type="submit" class="btn btn-primary col-12 mt-3 input-form">Search</button>
-                    <p class='border mt-3'></p>
-
-                    <button type="button" class="btn btn-secondary col-12 mt-3">Mebane</button>
-                    <button type="button" class="btn btn-secondary col-12 mt-3">Chapel Hill</button>
+                <div class="col-4 p-3">
+                    <div class="col-12 p-3">
+                        <label for="formGroupExampleInput" class="form-label h1">Search for a City:</label>
+                        <input type="text" class="form-control fs-3" id="city-name" placeholder="Enter city....">
+                        <button type="submit" class="btn btn-primary col-12 mt-3 input-form">Search</button>
+                        <p class='border mt-3'></p>    
+                    </div>
                     
+
+                    <div class="col-12 p-3 add-city">
+                        <button type="submit" class="btn btn-secondary col-12 mt-3 ">Raleigh</button>
+                        <button type="submit" class="btn btn-secondary col-12 mt-3">Chapel Hill</button>  
+                    </div>
                 </div>
 
+               
 
                 <div class="col-8" id="weather-card">
                     <!-- to display current weather here -->
-                    <div class='card col-11 h-65 p-3 m-4 bg-info' id='current-weather-card'>
-                        <h3 class='fw-bolder mb-4'>City: _ _ _ _</h3>
-                        <p class='fw-bold mb-1'>Temp:  _ _ _ _</p>
-                        <p class='fw-bold mb-1'>Wind Speed:  _ _ _ _</p>
-                        <p class='fw-bold mb-1'>Humidity:  _ _ _ _</p>
-                        <p class='fw-bold mb-1'>Cloudiness:  _ _ _ _</p>
-                    </div>
+                    <div class='card col-11 h-65 p-3 m-4 bg-info' id='current-weather-card'></div>
 
                     <h3 class='m-4'>5-Day Forecast:</h3>
                     <!-- display 5-day forecast here-->
-                    <div class='container col-11 d-flex flex-wrap' id='forecast-weather-card'>
-                        <div class='m-2 p-2 mb-1 col-2.2 forecast'>
-                            <h3 class='mb-1'>City: _ _ _ _</h3>
-                            <p class='mb-1'>Temp:  _ _ _ _</p>
-                            <p class='mb-1'>Wind Speed:  _ _ _ _</p>
-                            <p class='mb-1'>Humidity:  _ _ _ _</p>
-                            <p class='mb-1'>Cloudiness:  _ _ _ _</p>
-                        </div>
-                        <div class='m-2 p-2 mb-1 col-2.2 forecast'>
-                            <h3 class='mb-1'>City: _ _ _ _</h3>
-                            <p class='mb-1'>Temp:  _ _ _ _</p>
-                            <p class='mb-1'>Wind Speed:  _ _ _ _</p>
-                            <p class='mb-1'>Humidity:  _ _ _ _</p>
-                            <p class='mb-1'>Cloudiness:  _ _ _ _</p>
-                        </div>
-                        <div class='m-2 p-2 mb-1 col-2.2 forecast'>
-                            <h3 class='mb-1'>City: _ _ _ _</h3>
-                            <p class='mb-1'>Temp:  _ _ _ _</p>
-                            <p class='mb-1'>Wind Speed:  _ _ _ _</p>
-                            <p class='mb-1'>Humidity:  _ _ _ _</p>
-                            <p class='mb-1'>Cloudiness:  _ _ _ _</p>
-                        </div>
-                        <div class='m-2 p-2 mb-1 col-2.2 forecast'>
-                            <h3 class='mb-1'>City: _ _ _ _</h3>
-                            <p class='mb-1'>Temp:  _ _ _ _</p>
-                            <p class='mb-1'>Wind Speed:  _ _ _ _</p>
-                            <p class='mb-1'>Humidity:  _ _ _ _</p>
-                            <p class='mb-1'>Cloudiness:  _ _ _ _</p>
-                        </div>
-                        <div class='m-2 p-2 mb-1 col-2.2 forecast'>
-                            <h3 class='mb-1'>City: _ _ _ _</h3>
-                            <p class='mb-1'>Temp:  _ _ _ _</p>
-                            <p class='mb-1'>Wind Speed:  _ _ _ _</p>
-                            <p class='mb-1'>Humidity:  _ _ _ _</p>
-                            <p class='mb-1'>Cloudiness:  _ _ _ _</p>
-                        </div
-                        
-                    </div>
+                    <div class='container col-11 d-flex flex-wrap' id='forecast-weather-card'></div>
 
 
                 </div>
