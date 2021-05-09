@@ -6,12 +6,14 @@ var inputFormEl = $('.input-form')
 var cityPageEl = $('.add-city')
 
 var cityList = []
+
 var formSubmitHandler = function(event){
     event.preventDefault();
     var city = $.trim(cityNameEl.val());
     if(city){
         getCurrentWeather(city)
-        cityNameEl.val('')
+        
+        
     }
     else{
         alert("Please enter a city's name")
@@ -19,24 +21,29 @@ var formSubmitHandler = function(event){
         
 }
 
-function saveCity(city){
-    if(cityList.indexOf(city) === -1){
-        cityList.push(city)
-        appendCityBtn(city)
-        // console.log(city)
-    }
-    localStorage.setItem('city', JSON.stringify(cityList))
-    // console.log(cityList)
+function getSavedCity(){
     
-
+    var savedCity = JSON.parse(localStorage.getItem('city'))
+    if(savedCity !== null){
+        cityList = savedCity
+        for(var i = 0; i < cityList.length; i++){
+            appendCityBtn(cityList[i])
+        }
+    }
+    else{
+        return;
+    }
+    
+    
+    console.log(cityList)
+    
 }
-
 function appendCityBtn(cityName){
     
     var cityBtn = $('<button>')
-    cityBtn.text(cityName)
-    cityBtn.addClass('btn btn-secondary col-12 mt-3 city-btn capitalize')
-    cityPageEl.append(cityBtn)   
+        cityBtn.text(cityName)
+        cityBtn.addClass('btn btn-secondary col-12 mt-3 city-btn capitalize')
+        cityPageEl.append(cityBtn) 
     
 }
 
@@ -51,8 +58,16 @@ function getCurrentWeather(city){
                 response.json().then(function(data){
                     getForestWeather(data.coord.lat, data.coord.lon)
                     displayCurrentWeather(data)
-                    saveCity(city)
-                   
+                    //if city 404 not found, dont append or push
+                    if(cityList.indexOf(city) === -1){
+                        cityList.push(city)
+                        appendCityBtn(city)
+                        // console.log(city)        
+                    }
+                    
+                    cityNameEl.val('')
+                    localStorage.setItem('city', JSON.stringify(cityList))
+                    
                 })
 
             }
@@ -142,7 +157,7 @@ function displayForecastWeather(forecastData){
 
 
         var iconEl = $('<img>')
-        iconEl.attr('src',`http://openweathermap.org/img/wn/${forecastData.daily[i].weather[0].icon}@2x.png`)
+        iconEl.attr('src',`https://openweathermap.org/img/wn/${forecastData.daily[i].weather[0].icon}@2x.png`)
 
 
         var tempEl = $('<p>')
@@ -172,6 +187,7 @@ function displayForecastWeather(forecastData){
 //show default weather page
 getCurrentWeather('raleigh')
 
+
 //click event for search-button and cities-button
 inputFormEl.on('click', formSubmitHandler)
 
@@ -182,3 +198,6 @@ cityPageEl.on('click','.city-btn', function(event){
     console.log($(this).text())
 
 })
+
+getSavedCity()
+getCurrentWeather(cityList[cityList.length-1])
