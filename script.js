@@ -5,34 +5,37 @@ var weatherCardEl = $('#weather-card')
 var inputFormEl = $('.input-form')
 var cityPageEl = $('.add-city')
 
-
+var cityList = []
 var formSubmitHandler = function(event){
     event.preventDefault();
     var city = $.trim(cityNameEl.val());
     if(city){
-        
         getCurrentWeather(city)
-        appendCityBtn(city)
-
-        var cityList = []
-        cityList.push(city)
-        console.log(cityList)
+        cityNameEl.val('')
     }
     else{
         alert("Please enter a city's name")
     }
         
 }
-function saveCity(){
+
+function saveCity(city){
+    if(cityList.indexOf(city) === -1){
+        cityList.push(city)
+        appendCityBtn(city)
+        // console.log(city)
+    }
+    localStorage.setItem('city', JSON.stringify(cityList))
+    // console.log(cityList)
+    
 
 }
 
 function appendCityBtn(cityName){
     
     var cityBtn = $('<button>')
-    cityBtn.addClass('btn btn-secondary col-12 mt-3 capitalize')
-    cityBtn.attr('type', 'submit')
     cityBtn.text(cityName)
+    cityBtn.addClass('btn btn-secondary col-12 mt-3 city-btn capitalize')
     cityPageEl.append(cityBtn)   
     
 }
@@ -46,15 +49,18 @@ function getCurrentWeather(city){
         .then(function(response){
             if(response.ok){
                 response.json().then(function(data){
-                
                     getForestWeather(data.coord.lat, data.coord.lon)
-                    displayCurrentWeather(data)  
+                    displayCurrentWeather(data)
+                    saveCity(city)
                    
                 })
 
             }
             else{
-                alert(`Error: ${response.statusText}`)
+                alert(`Error: ${response.status} (${response.statusText})
+
+Unable to find the city!`)
+                
             }  
         })
         .catch(function(error){
@@ -163,5 +169,16 @@ function displayForecastWeather(forecastData){
     
 }
 
+//show default weather page
 getCurrentWeather('raleigh')
+
+//click event for search-button and cities-button
 inputFormEl.on('click', formSubmitHandler)
+
+cityPageEl.on('click','.city-btn', function(event){
+    var city = $(this).text()
+    event.preventDefault
+    getCurrentWeather(city)
+    console.log($(this).text())
+
+})
