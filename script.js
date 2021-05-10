@@ -47,9 +47,9 @@ function appendCityBtn(cityName){
     
 }
 
-function getCurrentWeather(city){
+function getCurrentWeather(cityName){
     var key = '826b4b7604f424dc0251a61dd3c403f9'
-    var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${key}`;
+    var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${key}`;
     
     
     fetch(currentWeatherUrl)
@@ -59,9 +59,9 @@ function getCurrentWeather(city){
                     getForestWeather(data.coord.lat, data.coord.lon)
                     displayCurrentWeather(data)
                     //if city 404 not found, dont append or push
-                    if(cityList.indexOf(city) === -1){
-                        cityList.push(city)
-                        appendCityBtn(city)
+                    if(cityList.indexOf(cityName) === -1){
+                        cityList.push(cityName)
+                        appendCityBtn(cityName)
                         // console.log(city)        
                     }
                     
@@ -186,6 +186,7 @@ function displayForecastWeather(forecastData){
 
 //show default weather page
 getCurrentWeather('raleigh')
+getSavedCity()
 
 
 //click event for search-button and cities-button
@@ -199,5 +200,5 @@ cityPageEl.on('click','.city-btn', function(event){
 
 })
 
-getSavedCity()
-getCurrentWeather(cityList[cityList.length-1])
+
+
