@@ -1,5 +1,5 @@
 # Weather-dashboard
-This web application will let user enter any city in world to see current weather, and 5-day forecast
+This web application will let user enter any city to see current weather, and 5-day forecast
 ### Link to the website
 https://markjune95.github.io/weather-dashboard/
 
