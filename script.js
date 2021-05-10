@@ -116,7 +116,7 @@ function displayCurrentWeather(weatherData){
     text.text('Now')
 
     var iconEl = $('<img>')
-    iconEl.attr('src',`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`)
+    iconEl.attr('src',`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`)
     iconEl.addClass('current-img')
     
     var tempEl = $('<p>')
